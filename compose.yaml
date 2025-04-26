@@ -1,0 +1,7 @@
+﻿services:
+  learningcsharp:
+    image: learningcsharp
+    build:
+      context: .
+      dockerfile: LearningCSharp/Dockerfile
+

@@ -1,0 +1,39 @@
+@HostAddress = http://localhost:5067
+
+GET {{HostAddress}}/
+Accept: application/json
+
+###
+GET {{HostAddress}}/games
+Accept: application/json
+
+###
+GET {{HostAddress}}/games/1
+Accept: application/json
+
+
+###
+POST {{HostAddress}}/games
+Content-Type: application/json
+
+{
+  "name": "Tekken 7",
+  "genre": "Fighting",
+  "price": 25.99,
+  "releaseDate": "2015-02-18"
+}
+
+###
+PUT {{HostAddress}}/games/1
+Content-Type: application/json
+
+{
+  "name": "Tekken 8",
+  "genre": "Fighting",
+  "price": 25.99,
+  "releaseDate": "2024-01-26"
+}
+
+###
+DELETE {{HostAddress}}/games/2
+

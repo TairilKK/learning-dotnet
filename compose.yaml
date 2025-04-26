@@ -5,3 +5,9 @@
       context: .
       dockerfile: LearningCSharp/Dockerfile
 
+  learningminimalapi:
+    image: learningminimalapi
+    build:
+      context: .
+      dockerfile: LearningMinimalAPI/Dockerfile
+

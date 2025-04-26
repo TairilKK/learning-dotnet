@@ -11,7 +11,6 @@ Accept: application/json
 GET {{HostAddress}}/games/1
 Accept: application/json
 
-
 ###
 POST {{HostAddress}}/games
 Content-Type: application/json

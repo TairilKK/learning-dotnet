@@ -7,8 +7,8 @@ var connString = builder.Configuration.GetConnectionString("GameStore");
 builder.Services.AddSqlite<GameStoreContext>(connString);
 
 var app = builder.Build();
-app.MigrateDatabase();
 
+await app.MigrateDatabaseAsync();
 app.MapGamesEndpoints();
 
 // GET: /

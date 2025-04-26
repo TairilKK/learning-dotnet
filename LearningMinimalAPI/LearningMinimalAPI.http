@@ -8,7 +8,7 @@ GET {{HostAddress}}/games
 Accept: application/json
 
 ###
-GET {{HostAddress}}/games/1
+GET {{HostAddress}}/games/15
 Accept: application/json
 
 ###
@@ -16,23 +16,23 @@ POST {{HostAddress}}/games
 Content-Type: application/json
 
 {
-  "name": "Tekken 7",
-  "genre": "Fighting",
+  "name": "GTA V",
+  "genreId": 2,
   "price": 25.99,
-  "releaseDate": "2015-02-18"
+  "releaseDate": "2024-02-18"
 }
 
 ###
-PUT {{HostAddress}}/games/1
+PUT {{HostAddress}}/games/15
 Content-Type: application/json
 
 {
-  "name": "Tekken 8",
-  "genre": "Fighting",
-  "price": 25.99,
-  "releaseDate": "2024-01-26"
+  "name": "Grand Theft Auto V",
+  "genreId": 4,
+  "price": 15.99,
+  "releaseDate": "2013-09-17"
 }
 
 ###
-DELETE {{HostAddress}}/games/2
+DELETE {{HostAddress}}/games/1
 

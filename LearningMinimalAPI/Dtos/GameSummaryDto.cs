@@ -1,6 +1,6 @@
 ﻿namespace LearningMinimalAPI.Dtos;
 
-public record GameDto(
+public record GameSummaryDto(
     int Id,
     string Name,
     string Genre,

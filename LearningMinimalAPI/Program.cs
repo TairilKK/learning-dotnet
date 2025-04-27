@@ -9,9 +9,11 @@ builder.Services.AddSqlite<GameStoreContext>(connString);
 var app = builder.Build();
 
 await app.MigrateDatabaseAsync();
-app.MapGamesEndpoints();
 
 // GET: /
 app.MapGet("/", () => Results.Ok("Welcome in LearningMinimalAPI project"));
+
+app.MapGamesEndpoints();
+app.MapGenresEndpoints();
 
 app.Run();

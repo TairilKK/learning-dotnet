@@ -35,4 +35,3 @@ Content-Type: application/json
 
 ###
 DELETE {{HostAddress}}/games/2
-

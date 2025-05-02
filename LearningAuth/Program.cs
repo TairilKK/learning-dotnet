@@ -8,6 +8,11 @@ Dictionary<string, List<string>> gamesMap = new()
     { "player2", new List<string>() { "Tekken 7", "Forza Horizon 5" } },
 };
 
+Dictionary<string, List<string>> subscriptionMap = new()
+{
+    { "silver", new List<string>() { "Tekken 7", "GTA V" } },
+    { "gold", new List<string>() { "Tekken 7", "GTA V", "Tekken 8", "Forza Horizon 5" } },
+};
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddAuthentication().AddJwtBearer();
@@ -25,6 +30,13 @@ app.MapGet("/playergames", () => gamesMap)
 // dotnet user-jwts create --role player -n player1
 app.MapGet("/mygames", (ClaimsPrincipal user) =>
 {
+    var hasClaim = user.HasClaim(claim => claim.Type == "subscription");
+    if (hasClaim)
+    {
+        var subs = user.FindFirstValue("subscription")
+                   ?? throw new Exception("Claim has no value");
+        return Results.Ok(subscriptionMap[subs]);
+    }
     ArgumentNullException.ThrowIfNull(user.Identity?.Name);
     var username = user.Identity.Name;
     if (!gamesMap.ContainsKey(username))

@@ -28,6 +28,7 @@ app.MapGet("/playergames", () => gamesMap)
     });
 
 // dotnet user-jwts create --role player -n player1
+// dotnet user-jwts create --role player -n player1 --claim subscription=gold
 app.MapGet("/mygames", (ClaimsPrincipal user) =>
 {
     var hasClaim = user.HasClaim(claim => claim.Type == "subscription");

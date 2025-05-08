@@ -23,3 +23,9 @@
       context: .
       dockerfile: WebApplication1/Dockerfile
 
+  learningcontrollers:
+    image: learningcontrollers
+    build:
+      context: .
+      dockerfile: LearningControllers/Dockerfile
+

@@ -24,6 +24,18 @@ public class MyBoardsContext(DbContextOptions<MyBoardsContext> options): DbConte
             eb.Property(wi => wi.Efford).HasColumnType("decimal(5,2)");
             eb.Property(wi => wi.Activity).HasMaxLength(200);
             eb.Property(wi => wi.RemainingWork).HasPrecision(14, 2);
+            eb.Property(wi => wi.Priority).HasDefaultValue(1);
         });
+
+        modelBuilder.Entity<Comment>(eb =>
+        {
+            eb.Property(x => x.CreatedTime).HasDefaultValue("now()");
+            eb.Property(x => x.UpdatedTime).ValueGeneratedOnUpdate();
+        });
+
+        modelBuilder.Entity<User>()
+            .HasOne(u => u.Address)
+            .WithOne(a => a.User)
+            .HasForeignKey<Address>(a => a.UserId);
     }
 }

@@ -72,7 +72,7 @@ public class MyBoardsContext(DbContextOptions<MyBoardsContext> options): DbConte
 
         modelBuilder.Entity<WorkItemState>(eb =>
         {
-            eb.Property(s => s.Value).IsRequired().HasMaxLength(50);
+            eb.Property(s => s.Value).IsRequired().HasMaxLength(60);
         });
     }
 }

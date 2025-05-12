@@ -1,9 +1,8 @@
-﻿using System.Runtime.InteropServices.JavaScript;
-
-namespace LearningEntityFramework.Entities;
+﻿namespace LearningEntityFramework.Entities;
 
 public class WorkItem
 {
+    public int Id { get; set; }
     public string State { get; set; }
     public string Area { get; set; }
     public string IterationPath { get; set; }

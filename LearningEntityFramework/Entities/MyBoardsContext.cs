@@ -30,7 +30,6 @@ public class MyBoardsContext(DbContextOptions<MyBoardsContext> options): DbConte
 
         modelBuilder.Entity<WorkItem>(eb =>
         {
-            eb.Property(wi => wi.Area).HasColumnType("varchar(200)");
             eb.Property(wi => wi.IterationPath).HasColumnName("Iteration_Path");
             eb.Property(wi => wi.Priority).HasDefaultValue(1);
 
@@ -69,6 +68,12 @@ public class MyBoardsContext(DbContextOptions<MyBoardsContext> options): DbConte
             .HasOne(u => u.Address)
             .WithOne(a => a.User)
             .HasForeignKey<Address>(a => a.UserId);
+
+        modelBuilder.Entity<User>()
+            .HasMany(u => u.Comments)
+            .WithOne(c => c.Author)
+            .HasForeignKey(c => c.AuthorId)
+            .OnDelete(DeleteBehavior.NoAction);
 
         modelBuilder.Entity<WorkItemState>(eb =>
         {

@@ -48,7 +48,7 @@ namespace LearningEntityFramework.Data.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Addresses", (string)null);
                 });
 
             modelBuilder.Entity("LearningEntityFramework.Entities.Comment", b =>
@@ -81,7 +81,7 @@ namespace LearningEntityFramework.Data.Migrations
 
                     b.HasIndex("WorkItemId");
 
-                    b.ToTable("Comments");
+                    b.ToTable("Comments", (string)null);
                 });
 
             modelBuilder.Entity("LearningEntityFramework.Entities.Tag", b =>
@@ -92,15 +92,12 @@ namespace LearningEntityFramework.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Category")
-                        .HasColumnType("text");
-
                     b.Property<string>("Value")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tags");
+                    b.ToTable("Tags", (string)null);
                 });
 
             modelBuilder.Entity("LearningEntityFramework.Entities.User", b =>
@@ -117,7 +114,7 @@ namespace LearningEntityFramework.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("LearningEntityFramework.Entities.WorkItem", b =>
@@ -157,7 +154,7 @@ namespace LearningEntityFramework.Data.Migrations
 
                     b.HasIndex("StateId");
 
-                    b.ToTable("WorkItems");
+                    b.ToTable("WorkItems", (string)null);
 
                     b.HasDiscriminator().HasValue("WorkItem");
 
@@ -179,7 +176,7 @@ namespace LearningEntityFramework.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WorkItemStates");
+                    b.ToTable("WorkItemStates", (string)null);
                 });
 
             modelBuilder.Entity("LearningEntityFramework.Entities.WorkItemTag", b =>
@@ -199,7 +196,7 @@ namespace LearningEntityFramework.Data.Migrations
 
                     b.HasIndex("WorkItemId");
 
-                    b.ToTable("WorkItemTag");
+                    b.ToTable("WorkItemTag", (string)null);
                 });
 
             modelBuilder.Entity("LearningEntityFramework.Entities.Epic", b =>

@@ -36,3 +36,7 @@ POST {{host}}/createTag
 
 ###
 DELETE {{host}}/deleteTag
+
+
+###
+GET {{host}}/getUserComments

@@ -1,12 +1,19 @@
+using System.Text.Json.Serialization;
 using LearningEntityFramework;
 using LearningEntityFramework.Endpoints;
 using LearningEntityFramework.Entities;
+using Microsoft.AspNetCore.Http.Json;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.Configure<JsonOptions>(options =>
+{
+    options.SerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+});
+
 builder.Services.AddDbContext<MyBoardsContext>(
     option => option.UseNpgsql(builder.Configuration.GetConnectionString("MyBoardsDbConnectionString"))
 );
@@ -82,5 +89,16 @@ app.MapDelete("deleteTag", async (MyBoardsContext db) =>
 
     db.Tags.Remove(tag);
     await db.SaveChangesAsync();
+});
+
+app.MapGet("getUserComments", async (MyBoardsContext db) =>
+{
+    var user = await db.Users
+        .Include(u => u.Comments).ThenInclude(c=>c.WorkItem)
+        .Include(u=>u.Address)
+        .FirstAsync(u => u.Id == Guid.Parse("68366DBE-0809-490F-CC1D-08DA10AB0E61"));
+
+    // var userComments = await db.Comments.Where(c => c.AuthorId == user.Id).ToListAsync();
+    return user;
 });
 app.Run();

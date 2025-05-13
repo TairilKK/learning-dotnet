@@ -16,13 +16,43 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-using var scopre = app.Services.CreateScope();
-var dbContext = scopre.ServiceProvider.GetService<MyBoardsContext>();
+using var scope = app.Services.CreateScope();
+var dbContext = scope.ServiceProvider.GetService<MyBoardsContext>();
 
 var pendingMigrations = dbContext.Database.GetPendingMigrations();
 if (pendingMigrations.Any())
 {
     dbContext.Database.Migrate();
+}
+
+var users = dbContext.Users.ToList();
+if (!users.Any())
+{
+    var user1 = new User()
+    {
+        Email = "user1@email.com",
+        FullName = "User One",
+        Address = new Address()
+        {
+            City = "Warszawa",
+            Street = "Szeroka"
+        }
+    };
+
+
+    var user2 = new User()
+    {
+        Email = "user2@email.com",
+        FullName = "User Two",
+        Address = new Address()
+        {
+            City = "Kraków",
+            Street = "Szeroka"
+        }
+    };
+
+    dbContext.Users.AddRange(user1, user2);
+    dbContext.SaveChanges();
 }
 
 app.Run();

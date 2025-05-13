@@ -1,6 +1,22 @@
-@LearningEntityFramework_HostAddress = http://localhost:5264
+@host = http://localhost:5264
 
-GET {{LearningEntityFramework_HostAddress}}/weatherforecast/
+GET {{host}}/tags/
 Accept: application/json
 
 ###
+GET {{host}}/firstEpicFirstUserOne
+
+###
+GET {{host}}/toDoWorkItems
+
+
+###
+GET {{host}}/newComments
+
+
+###
+GET {{host}}/epicOnHold
+
+
+###
+GET {{host}}/authorWithMostComment

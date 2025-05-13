@@ -60,8 +60,8 @@ public class MyBoardsContext(DbContextOptions<MyBoardsContext> options): DbConte
 
         modelBuilder.Entity<Comment>(eb =>
         {
-            eb.Property(x => x.CreatedTime).HasDefaultValueSql("now()");
-            eb.Property(x => x.UpdatedTime).ValueGeneratedOnUpdate();
+            eb.Property(x => x.CreatedDate).HasDefaultValueSql("now()");
+            eb.Property(x => x.UpdatedDate).ValueGeneratedOnUpdate();
         });
 
         modelBuilder.Entity<User>()

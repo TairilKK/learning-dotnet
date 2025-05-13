@@ -55,4 +55,20 @@ if (!users.Any())
     dbContext.SaveChanges();
 }
 
+var tags = dbContext.Tags.ToList();
+if (!tags.Any())
+{
+    var newTags = new List<Tag>
+    {
+        new Tag() { Value = "Web" },
+        new Tag() { Value = "UI" },
+        new Tag() { Value = "Desktop" },
+        new Tag() { Value = "API" },
+        new Tag() { Value = "Service" },
+    };
+
+    dbContext.Tags.AddRange(newTags);
+    dbContext.SaveChanges();
+}
+
 app.Run();

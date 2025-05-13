@@ -32,4 +32,26 @@ app.AddTagData(dbContext);
 
 app.MapSimpleQueries();
 
+app.MapPut("updateAreaPriority", async (MyBoardsContext db) =>
+{
+    var epic = await db.Epics.FirstAsync(epic => epic.Id == 1);
+
+    epic.Area = "Updated area";
+    epic.Priority = 1;
+
+    await db.SaveChangesAsync();
+
+    return epic;
+});
+
+app.MapPut("updateState", async (MyBoardsContext db) =>
+{
+    var epic = await db.Epics.FirstAsync(epic => epic.Id == 1);
+
+    epic.StateId = 1;
+
+    await db.SaveChangesAsync();
+
+    return epic;
+});
 app.Run();

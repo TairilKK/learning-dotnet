@@ -20,3 +20,11 @@ GET {{host}}/epicOnHold
 
 ###
 GET {{host}}/authorWithMostComment
+
+
+###
+PUT {{host}}/updateAreaPriority
+
+
+###
+PUT {{host}}/updateState

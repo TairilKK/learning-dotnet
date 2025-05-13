@@ -54,4 +54,33 @@ app.MapPut("updateState", async (MyBoardsContext db) =>
 
     return epic;
 });
+
+app.MapPost("createTag", async (MyBoardsContext db) =>
+{
+    var tag = new Tag()
+    {
+        Value = "EF"
+    };
+
+    // await db.AddAsync(tag);
+    await db.Tags.AddAsync(tag);
+
+    await db.SaveChangesAsync();
+    return tag;
+});
+
+app.MapDelete("deleteTag", async (MyBoardsContext db) =>
+{
+    var tag = await db.Tags
+        .Where(t => t.Value == "EF")
+        .FirstAsync();
+
+    if (tag is null)
+    {
+        return;
+    }
+
+    db.Tags.Remove(tag);
+    await db.SaveChangesAsync();
+});
 app.Run();

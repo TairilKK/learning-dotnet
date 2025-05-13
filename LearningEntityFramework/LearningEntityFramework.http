@@ -28,3 +28,11 @@ PUT {{host}}/updateAreaPriority
 
 ###
 PUT {{host}}/updateState
+
+
+###
+POST {{host}}/createTag
+
+
+###
+DELETE {{host}}/deleteTag

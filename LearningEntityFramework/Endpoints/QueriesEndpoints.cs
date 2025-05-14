@@ -5,7 +5,7 @@ namespace LearningEntityFramework.Endpoints;
 
 public static class QueriesEndpoints
 {
-    public static void MapSimpleQueries(this WebApplication app)
+    public static void MapQueries(this WebApplication app)
     {
         app.MapGet("tags", (MyBoardsContext db) => db.Tags.ToList());
         app.MapGet("firstEpicFirstUserOne", (MyBoardsContext db) =>
@@ -57,6 +57,108 @@ public static class QueriesEndpoints
                 .FirstAsync();
 
             return new { authorDetails, authorWithMostComment.count };
+        });
+
+        app.MapPut("updateAreaPriority", async (MyBoardsContext db) =>
+        {
+            var epic = await db.Epics.FirstAsync(epic => epic.Id == 1);
+
+            epic.Area = "Updated area";
+            epic.Priority = 1;
+
+            await db.SaveChangesAsync();
+
+            return epic;
+        });
+
+        app.MapPut("updateState", async (MyBoardsContext db) =>
+        {
+            var epic = await db.Epics.FirstAsync(epic => epic.Id == 1);
+
+            epic.StateId = 1;
+
+            await db.SaveChangesAsync();
+
+            return epic;
+        });
+
+        app.MapPost("createTag", async (MyBoardsContext db) =>
+        {
+            var tag = new Tag()
+            {
+                Value = "EF"
+            };
+
+            // await db.AddAsync(tag);
+            await db.Tags.AddAsync(tag);
+
+            await db.SaveChangesAsync();
+            return tag;
+        });
+
+        app.MapDelete("deleteTag", async (MyBoardsContext db) =>
+        {
+            var tag = await db.Tags
+                .Where(t => t.Value == "EF")
+                .FirstAsync();
+
+            if (tag is null)
+            {
+                return;
+            }
+
+            db.Tags.Remove(tag);
+            await db.SaveChangesAsync();
+        });
+
+        app.MapGet("getUserComments", async (MyBoardsContext db) =>
+        {
+            var user = await db.Users
+                .Include(u => u.Comments).ThenInclude(c=>c.WorkItem)
+                .Include(u=>u.Address)
+                .FirstAsync(u => u.Id == Guid.Parse("68366DBE-0809-490F-CC1D-08DA10AB0E61"));
+
+            // var userComments = await db.Comments.Where(c => c.AuthorId == user.Id).ToListAsync();
+            return user;
+        });
+        app.MapGet("getRawSql", async (MyBoardsContext db) =>
+        {
+            var minWorkItemsCount = 85;
+            var workItems = await db.WorkItemStates
+                .FromSqlInterpolated($@"
+SELECT wis.""Id"", wis.""Value""
+FROM ""WorkItemStates"" wis
+JOIN ""WorkItems"" wi on wi.""StateId"" = wis.""Id""
+GROUP BY wis.""Id"", wis.""Value""
+HAVING Count(*) > {minWorkItemsCount}
+        ").ToListAsync();
+
+            return workItems;
+        });
+
+        app.MapGet("getDataFromView", async (MyBoardsContext db)
+            => await db.ViewTopAuthors.ToListAsync()
+        );
+
+        app.MapGet("getLazyLoading", async (MyBoardsContext db) =>
+        {
+            var withAddress = true;
+            var user = db.Users
+                .First();
+
+            if (withAddress)
+            {
+                var result = new
+                {
+                    FullName = user.FullName,
+                    Address = $"{user.Address.Street} {user.Address.City}"
+                };
+                return result;
+            }
+            return new {
+                FullName = user.FullName,
+                Address = "-"
+            };
         });
     }
 }

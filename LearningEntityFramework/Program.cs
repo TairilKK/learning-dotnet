@@ -15,7 +15,9 @@ builder.Services.Configure<JsonOptions>(options =>
 });
 
 builder.Services.AddDbContext<MyBoardsContext>(
-    option => option.UseNpgsql(builder.Configuration.GetConnectionString("MyBoardsDbConnectionString"))
+    option => option
+        .UseLazyLoadingProxies()
+        .UseNpgsql(builder.Configuration.GetConnectionString("MyBoardsDbConnectionString"))
 );
 var app = builder.Build();
 
@@ -119,4 +121,26 @@ HAVING Count(*) > {minWorkItemsCount}
 app.MapGet("getDataFromView", async (MyBoardsContext db)
     => await db.ViewTopAuthors.ToListAsync()
 );
+
+app.MapGet("getLazyLoading", async (MyBoardsContext db) =>
+{
+    var withAddress = true;
+    var user = db.Users
+        .First();
+
+    if (withAddress)
+    {
+        var result = new
+        {
+            FullName = user.FullName,
+            Address = $"{user.Address.Street} {user.Address.City}"
+        };
+        return result;
+    }
+    return new {
+        FullName = user.FullName,
+        Address = "-"
+    };
+});
+
 app.Run();

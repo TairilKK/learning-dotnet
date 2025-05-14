@@ -48,3 +48,7 @@ GET {{host}}/getRawSql
 
 ###
 GET {{host}}/getDataFromView
+
+
+###
+GET {{host}}/getLazyLoading

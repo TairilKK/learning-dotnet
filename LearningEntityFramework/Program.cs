@@ -115,4 +115,8 @@ HAVING Count(*) > {minWorkItemsCount}
 
     return workItems;
 });
+
+app.MapGet("getDataFromView", async (MyBoardsContext db)
+    => await db.ViewTopAuthors.ToListAsync()
+);
 app.Run();

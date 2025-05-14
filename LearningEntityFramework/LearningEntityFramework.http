@@ -44,3 +44,7 @@ GET {{host}}/getUserComments
 
 ###
 GET {{host}}/getRawSql
+
+
+###
+GET {{host}}/getDataFromView

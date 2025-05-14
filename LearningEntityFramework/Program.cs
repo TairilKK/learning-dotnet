@@ -40,55 +40,6 @@ if (pendingMigrations.Any())
 
 app.AddUserData(dbContext);
 app.AddTagData(dbContext);
-
 app.MapQueries();
-
-app.MapGet("pagination", async (MyBoardsContext db) =>
-{
-    var filter = "a";
-    var sortBy = "FullName"; // "FullName" "Email" null
-    var sortByDescending = false;
-    var pageNumber = 1;
-    var pageSize = 10;
-    filter = filter.ToLower();
-    var query = db.Users
-        .Where(u => filter == null ||
-            u.Email.ToLower().Contains(filter) ||
-            u.FullName.ToLower().Contains(filter));
-
-    var totalCount = query.Count();
-
-    if (sortBy is not null)
-    {
-        var columnsSelector = new Dictionary<string, Expression<Func<User, object>>>()
-        {
-            { nameof(User.Email), user => user.Email },
-            { nameof(User.FullName), user => user.FullName }
-        };
-
-        var sortByExpression = columnsSelector[sortBy];
-        query = sortByDescending
-                ? query.OrderByDescending(sortByExpression)
-                : query.OrderBy(sortByExpression);
-    }
-
-    query = query.Skip((pageNumber - 1) * pageSize)
-        .Take(pageSize);
-
-    var result =  await query.ToListAsync();
-
-    return result.ToPagedResultDto(totalCount, pageSize, pageNumber);
-});
-
-app.MapGet("getAlbanianUsers", async (MyBoardsContext db) =>
-{
-    var userFullNames = await db.Users
-        .Include(u => u.Address)
-        .Where(u => u.Address.Country == "Albania")
-        .Select(u => u.FullName)
-        .ToListAsync();
-
-    return userFullNames;
-});
 
 app.Run();

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using LearningEntityFramework.Entities.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace LearningEntityFramework.Entities;
 
@@ -13,6 +14,7 @@ public class MyBoardsContext(DbContextOptions<MyBoardsContext> options): DbConte
     public DbSet<Comment> Comments { get; set; }
     public DbSet<Address> Addresses { get; set; }
     public DbSet<WorkItemState> WorkItemStates { get; set; }
+    public DbSet<TopAuthor> ViewTopAuthors { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Epic>(eb =>
@@ -86,5 +88,11 @@ public class MyBoardsContext(DbContextOptions<MyBoardsContext> options): DbConte
                 new WorkItemState() { Id = 2, Value = "Doing" },
                 new WorkItemState() { Id = 3, Value = "Done" }
             );
+
+        modelBuilder.Entity<TopAuthor>(eb =>
+        {
+            eb.ToView("view_topauthors");
+            eb.HasNoKey();
+        });
     }
 }

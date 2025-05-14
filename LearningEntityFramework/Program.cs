@@ -16,7 +16,7 @@ builder.Services.Configure<JsonOptions>(options =>
 
 builder.Services.AddDbContext<MyBoardsContext>(
     option => option
-        .UseLazyLoadingProxies()
+        // .UseLazyLoadingProxies()
         .UseNpgsql(builder.Configuration.GetConnectionString("MyBoardsDbConnectionString"))
 );
 var app = builder.Build();

@@ -1,6 +1,6 @@
-@LearningEntityFrameworkNorthwind_HostAddress = http://localhost:5220
+@host = http://localhost:5000
 
-GET {{LearningEntityFrameworkNorthwind_HostAddress}}/weatherforecast/
+GET {{host}}/data/
 Accept: application/json
 
 ###

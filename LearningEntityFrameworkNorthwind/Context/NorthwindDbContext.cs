@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LearningEntityFrameworkNorthwind.Context;
 
-public partial class MyDbContext : DbContext
+public partial class NorthwindDbContext : DbContext
 {
-    public MyDbContext()
+    public NorthwindDbContext()
     {
     }
 
-    public MyDbContext(DbContextOptions<MyDbContext> options)
+    public NorthwindDbContext(DbContextOptions<NorthwindDbContext> options)
         : base(options)
     {
     }
@@ -71,7 +71,6 @@ public partial class MyDbContext : DbContext
     public virtual DbSet<Territory> Territories { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("data source=WIN11_JDOBR;initial catalog=Northwind;user id=sa;password=praktyka;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

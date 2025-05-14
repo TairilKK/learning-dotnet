@@ -94,5 +94,12 @@ public class MyBoardsContext(DbContextOptions<MyBoardsContext> options): DbConte
             eb.ToView("view_topauthors");
             eb.HasNoKey();
         });
+
+        modelBuilder.Entity<Address>()
+            .OwnsOne(a => a.Coordinate, cmb =>
+            {
+                cmb.Property(c => c.Latitude).HasPrecision(18, 7);
+                cmb.Property(c => c.Longitude).HasPrecision(18, 7);
+            });
     }
 }

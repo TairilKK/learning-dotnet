@@ -80,4 +80,15 @@ app.MapGet("pagination", async (MyBoardsContext db) =>
     return result.ToPagedResultDto(totalCount, pageSize, pageNumber);
 });
 
+app.MapGet("getAlbanianUsers", async (MyBoardsContext db) =>
+{
+    var userFullNames = await db.Users
+        .Include(u => u.Address)
+        .Where(u => u.Address.Country == "Albania")
+        .Select(u => u.FullName)
+        .ToListAsync();
+
+    return userFullNames;
+});
+
 app.Run();

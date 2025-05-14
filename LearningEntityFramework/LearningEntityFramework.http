@@ -56,3 +56,7 @@ GET {{host}}/getLazyLoading
 
 ###
 GET {{host}}/pagination
+
+
+###
+GET {{host}}/getAlbanianUsers

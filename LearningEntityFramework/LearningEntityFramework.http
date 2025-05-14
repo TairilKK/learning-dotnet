@@ -40,3 +40,7 @@ DELETE {{host}}/deleteTag
 
 ###
 GET {{host}}/getUserComments
+
+
+###
+GET {{host}}/getRawSql

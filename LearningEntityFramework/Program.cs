@@ -101,4 +101,18 @@ app.MapGet("getUserComments", async (MyBoardsContext db) =>
     // var userComments = await db.Comments.Where(c => c.AuthorId == user.Id).ToListAsync();
     return user;
 });
+app.MapGet("getRawSql", async (MyBoardsContext db) =>
+{
+    var minWorkItemsCount = 85;
+    var workItems = await db.WorkItemStates
+        .FromSqlInterpolated($@"
+SELECT wis.""Id"", wis.""Value""
+FROM ""WorkItemStates"" wis
+JOIN ""WorkItems"" wi on wi.""StateId"" = wis.""Id""
+GROUP BY wis.""Id"", wis.""Value""
+HAVING Count(*) > {minWorkItemsCount}
+        ").ToListAsync();
+
+    return workItems;
+});
 app.Run();

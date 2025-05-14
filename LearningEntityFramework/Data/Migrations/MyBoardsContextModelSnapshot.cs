@@ -48,7 +48,7 @@ namespace LearningEntityFramework.Data.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Addresses", (string)null);
                 });
 
             modelBuilder.Entity("LearningEntityFramework.Entities.Comment", b =>
@@ -83,7 +83,7 @@ namespace LearningEntityFramework.Data.Migrations
 
                     b.HasIndex("WorkItemId");
 
-                    b.ToTable("Comments");
+                    b.ToTable("Comments", (string)null);
                 });
 
             modelBuilder.Entity("LearningEntityFramework.Entities.Tag", b =>
@@ -99,7 +99,7 @@ namespace LearningEntityFramework.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tags");
+                    b.ToTable("Tags", (string)null);
                 });
 
             modelBuilder.Entity("LearningEntityFramework.Entities.User", b =>
@@ -116,7 +116,7 @@ namespace LearningEntityFramework.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("LearningEntityFramework.Entities.ViewModels.TopAuthor", b =>
@@ -169,7 +169,7 @@ namespace LearningEntityFramework.Data.Migrations
 
                     b.HasIndex("StateId");
 
-                    b.ToTable("WorkItems");
+                    b.ToTable("WorkItems", (string)null);
 
                     b.HasDiscriminator().HasValue("WorkItem");
 
@@ -191,7 +191,7 @@ namespace LearningEntityFramework.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WorkItemStates");
+                    b.ToTable("WorkItemStates", (string)null);
 
                     b.HasData(
                         new
@@ -228,7 +228,7 @@ namespace LearningEntityFramework.Data.Migrations
 
                     b.HasIndex("WorkItemId");
 
-                    b.ToTable("WorkItemTag");
+                    b.ToTable("WorkItemTag", (string)null);
                 });
 
             modelBuilder.Entity("LearningEntityFramework.Entities.Epic", b =>
@@ -278,7 +278,7 @@ namespace LearningEntityFramework.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("LearningEntityFramework.Entities.Coordinate", "Coordinate", b1 =>
+                    b.OwnsOne("LearningEntityFramework.Entities.Address.Coordinate#LearningEntityFramework.Entities.Coordinate", "Coordinate", b1 =>
                         {
                             b1.Property<Guid>("AddressId")
                                 .HasColumnType("uuid");
@@ -293,7 +293,7 @@ namespace LearningEntityFramework.Data.Migrations
 
                             b1.HasKey("AddressId");
 
-                            b1.ToTable("Addresses");
+                            b1.ToTable("Addresses", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("AddressId");

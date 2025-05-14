@@ -52,3 +52,7 @@ GET {{host}}/getDataFromView
 
 ###
 GET {{host}}/getLazyLoading
+
+
+###
+GET {{host}}/pagination

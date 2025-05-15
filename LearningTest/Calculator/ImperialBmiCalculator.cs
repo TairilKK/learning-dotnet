@@ -10,7 +10,7 @@ public class ImperialBmiCalculator : IBmiCalculator
         if (height <= 0)
             throw new ArgumentException("Height is not a valid number");
 
-        var bmi = 703 * weight / Math.Pow((height / 100.0), 2);
+        var bmi = 703 * weight / Math.Pow(height, 2);
         return Math.Round(bmi, 2);
     }
 }

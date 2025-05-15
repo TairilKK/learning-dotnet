@@ -7,7 +7,7 @@ public class BmiCalculatorFacade
 {
     private readonly UnitSystem _unitSystem;
     private readonly IBmiCalculator _bmiCalculator;
-    private readonly BmiDeterminator? _bmiDeterminator = new();
+    private readonly IBmiDeterminator _bmiDeterminator;
 
     private IBmiCalculator GetBmiCalculator(UnitSystem unitSystem) => unitSystem switch
     {
@@ -26,9 +26,10 @@ public class BmiCalculatorFacade
         _ => throw new NotImplementedException()
     };
 
-    public BmiCalculatorFacade(UnitSystem unitSystem)
+    public BmiCalculatorFacade(UnitSystem unitSystem, IBmiDeterminator bmiDeterminator)
     {
         _unitSystem = unitSystem;
+        _bmiDeterminator = bmiDeterminator;
         _bmiCalculator = GetBmiCalculator(_unitSystem);
     }
 

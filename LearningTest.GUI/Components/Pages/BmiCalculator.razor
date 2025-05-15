@@ -1,0 +1,54 @@
+﻿@page "/BMICalculator"
+@using LearningTest.Model
+@rendermode InteractiveServer
+
+<PageTitle>BMI Calculator</PageTitle>
+
+<h1>BMI Calculator</h1>
+
+<form @onsubmit="HandleSubmit">
+    <label for="system">System:</label>
+    <select id="system" @bind="System">
+        <option value="@UnitSystem.Metric" selected>Metric</option>
+        <option value="@UnitSystem.Imperial">Imperial</option>
+    </select>
+    <label for="weight"> Weight: (@(System == UnitSystem.Metric ? "kg" : "lbs")) </label>
+    <input id="weight" type="number" @bind="Weight">
+
+    <label for="height">Height: (@(System == UnitSystem.Metric ? "cm" : "inc"))</label>
+    <input id="height" type="number" @bind="Height">
+
+    <input type="submit" value="Submit"/>
+</form>
+@if (submitted)
+{
+    <h2>@(summary.Summary)</h2>
+}
+@code {
+    private UnitSystem System { get; set; }
+    private double Weight { get; set; }
+    private double Height { get; set; }
+    private bool submitted = false;
+    private BmiResult summary;
+    private void HandleSubmit()
+    {
+        submitted = true;
+        BmiCalculatorFacade bmiCalculator = new BmiCalculatorFacade(System);
+        summary = bmiCalculator.GetResult(Weight, Height);
+    }
+
+}
+
+<style>
+    form {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        gap: 15px;
+        font-size: 1.25rem;
+        width: 50%;
+    }
+
+    input[type="submit"] {
+        grid-column: span 2;
+    }
+</style>

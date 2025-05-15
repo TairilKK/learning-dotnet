@@ -5,5 +5,6 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=874e0e26_002D63ae_002D4012_002Dbbaf_002Da80d77fc5e6f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="StringBuilderTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::001031AE-D05C-4F4F-95E9-DC358E7F63B9::net8.0::LearningTest.Tests.StringBuilderTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::001031AE-D05C-4F4F-95E9-DC358E7F63B9::net8.0::LearningTest.Tests.BmiDeterminatorTest.DetermineBmi_ForBmiBelow18_5_ReturnsUnderweightClassification&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

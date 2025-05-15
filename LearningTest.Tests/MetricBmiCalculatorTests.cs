@@ -19,4 +19,21 @@ public class MetricBmiCalculatorTests
 
         Assert.Equal(bmiResult, result);
     }
+
+    [Theory]
+    [InlineData(0, 190)]
+    [InlineData(-5, 150)]
+    [InlineData(-15, 150)]
+    [InlineData(150, 0)]
+    [InlineData(150, -1)]
+    [InlineData(150, -19)]
+    [InlineData(0, 0)]
+    public void CalculateBmi_ForInvalidArguments_ThrowsArgumentException(double weight, double height)
+    {
+        var metricBmiCalculator = new MetricBmiCalculator();
+
+        Action action = () => metricBmiCalculator.CalculateBmi(weight, height);
+
+        Assert.Throws<ArgumentException>(action);
+    }
 }

@@ -7,5 +7,6 @@
     &lt;TestId&gt;xUnit::001031AE-D05C-4F4F-95E9-DC358E7F63B9::net8.0::LearningTest.Tests.StringBuilderTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::001031AE-D05C-4F4F-95E9-DC358E7F63B9::net8.0::LearningTest.Tests.BmiDeterminatorTest.DetermineBmi_ForBmiBelow18_5_ReturnsUnderweightClassification&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::001031AE-D05C-4F4F-95E9-DC358E7F63B9::net8.0::LearningTest.Tests.BmiDeterminatorTest.DetermineBmi_ForGivenBmi_ReturnsCorrectClassification&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::001031AE-D05C-4F4F-95E9-DC358E7F63B9::net8.0::LearningTest.Tests.MetricBmiCalculatorTests.CalculateBmi_ForGivenWeightAndHeight_ReturnCorrectBmi&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

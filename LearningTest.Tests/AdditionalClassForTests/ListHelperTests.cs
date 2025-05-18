@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using LearningTest.AdditionalClassForTests;
 
-namespace LearningTest.Tests;
+namespace LearningTest.Tests.AdditionalClassForTests;
 
 public class ListHelperTests
 {

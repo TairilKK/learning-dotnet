@@ -25,7 +25,7 @@ public class MetricBmiCalculatorTests
     }
 
     [Theory]
-    [ClassData(typeof(MetricBmiCalculatorTestData))]
+    [JsonFileData("Data/MetricBmiCalculatorData.json")]
     public void CalculateBmi_ForInvalidArguments_ThrowsArgumentException(double weight, double height)
     {
         var metricBmiCalculator = new MetricBmiCalculator();

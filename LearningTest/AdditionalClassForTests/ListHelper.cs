@@ -4,14 +4,15 @@
     {
         public static List<int> FilterOddNumber(List<int> listOfNumbers)
         {
-            for (int i = 0; i < listOfNumbers.Count; i++)
+            var result = new List<int>();
+            foreach (var n in listOfNumbers)
             {
-                if (listOfNumbers[i] % 2 == 0)
+                if (n % 2 == 0)
                 {
-                    listOfNumbers.RemoveAt(i);
+                    result.Add(n);
                 }
             }
-            return listOfNumbers;
+            return result;
         }
     }
 }

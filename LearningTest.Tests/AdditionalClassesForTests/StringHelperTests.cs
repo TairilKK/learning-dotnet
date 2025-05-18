@@ -1,6 +1,6 @@
-﻿using LearningTest.AdditionalClassForTests;
+﻿using LearningTest.AdditionalClassesForTests;
 
-namespace LearningTest.Tests.AdditionalClassForTests;
+namespace LearningTest.Tests.AdditionalClassesForTests;
 
 public class StringHelperTests
 {

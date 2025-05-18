@@ -1,4 +1,4 @@
-﻿namespace LearningTest.AdditionalClassForTests
+﻿namespace LearningTest.AdditionalClassesForTests
 {
     public static class StringHelper
     {

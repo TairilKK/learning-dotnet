@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace LearningTest.Tests.AdditionalClassForTests;
+namespace LearningTest.Tests.AdditionalClassesForTests;
 
 public class StringBuilderTests
 {

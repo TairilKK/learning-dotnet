@@ -1,4 +1,4 @@
-﻿namespace LearningTest.AdditionalClassForTests
+﻿namespace LearningTest.AdditionalClassesForTests
 {
     public static class ListHelper
     {
@@ -7,7 +7,7 @@
             var result = new List<int>();
             foreach (var n in listOfNumbers)
             {
-                if (n % 2 == 0)
+                if (n % 2 != 0)
                 {
                     result.Add(n);
                 }

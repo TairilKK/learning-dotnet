@@ -2,15 +2,7 @@
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AException_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003FUsers_003Fjdobr_003FAppData_003FRoaming_003FJetBrains_003FRider2025_002E1_003Fresharper_002Dhost_003FSourcesCache_003Fb4f8b29071cfcf73e927671b936ba53110f1b613a1cc9bef4fc4f07dd0fbe9_003FException_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AInternalEntityEntry_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003FUsers_003Fjdobr_003FAppData_003FRoaming_003FJetBrains_003FRider2025_002E1_003Fresharper_002Dhost_003FSourcesCache_003F1b2ed948c9e0b5cc82374df2a16ce6921e64bbd731ae919f0439a37c7985320_003FInternalEntityEntry_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003ARequestDelegateFactory_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003FUsers_003Fjdobr_003FAppData_003FRoaming_003FJetBrains_003FRider2025_002E1_003Fresharper_002Dhost_003FSourcesCache_003Fc3ace9c0cdb8eb7fe7dd97392746e23ad3d4cd87bc2f0f967f0404775afbef_003FRequestDelegateFactory_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=874e0e26_002D63ae_002D4012_002Dbbaf_002Da80d77fc5e6f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="StringBuilderTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::001031AE-D05C-4F4F-95E9-DC358E7F63B9::net8.0::LearningTest.Tests.StringBuilderTests&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::001031AE-D05C-4F4F-95E9-DC358E7F63B9::net8.0::LearningTest.Tests.BmiDeterminatorTest.DetermineBmi_ForBmiBelow18_5_ReturnsUnderweightClassification&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::001031AE-D05C-4F4F-95E9-DC358E7F63B9::net8.0::LearningTest.Tests.BmiDeterminatorTest.DetermineBmi_ForGivenBmi_ReturnsCorrectClassification&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::001031AE-D05C-4F4F-95E9-DC358E7F63B9::net8.0::LearningTest.Tests.MetricBmiCalculatorTests.CalculateBmi_ForGivenWeightAndHeight_ReturnCorrectBmi&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::001031AE-D05C-4F4F-95E9-DC358E7F63B9::net8.0::LearningTest.Tests.MetricBmiCalculatorTests.CalculateBmi_ForInvalidArguments_ThrowsArgumentException&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::001031AE-D05C-4F4F-95E9-DC358E7F63B9::net8.0::LearningTest.Tests.ImperialBmiCalculatorTests&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::001031AE-D05C-4F4F-95E9-DC358E7F63B9::net8.0::LearningTest.Tests.BmiCalculatorFacadeTests.GetResult_ForValidInputs_ReturnCorrectResult&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::001031AE-D05C-4F4F-95E9-DC358E7F63B9::net8.0::LearningTest.Tests.BmiCalculatorFacadeTests.GetResult_ForValidInputs_ReturnCorrectSummary&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3d103463_002D57c0_002D4aa5_002Da7b3_002Df20080db8acc/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="IsPalindrome_ForAWord_ReturnsFalseValue" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Solution /&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	</wpf:ResourceDictionary>

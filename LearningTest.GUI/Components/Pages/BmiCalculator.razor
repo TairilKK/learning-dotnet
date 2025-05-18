@@ -8,14 +8,14 @@
 
 <form @onsubmit="HandleSubmit">
     <label for="system">System:</label>
-    <select id="system" @bind="System">
+    <select id="system" @bind="UnitSystem">
         <option value="@UnitSystem.Metric" selected>Metric</option>
         <option value="@UnitSystem.Imperial">Imperial</option>
     </select>
-    <label for="weight"> Weight: (@(System == UnitSystem.Metric ? "kg" : "lbs")) </label>
+    <label for="weight"> Weight: (@(UnitSystem == UnitSystem.Metric ? "kg" : "lbs")) </label>
     <input id="weight" type="number" @bind="Weight">
 
-    <label for="height">Height: (@(System == UnitSystem.Metric ? "cm" : "inc"))</label>
+    <label for="height">Height: (@(UnitSystem == UnitSystem.Metric ? "cm" : "inc"))</label>
     <input id="height" type="number" @bind="Height">
 
     <input type="submit" value="Submit"/>
@@ -25,15 +25,16 @@
     <h2>@(summary.Summary)</h2>
 }
 @code {
-    private UnitSystem System { get; set; }
+    private UnitSystem UnitSystem { get; set; }
     private double Weight { get; set; }
     private double Height { get; set; }
     private bool submitted = false;
     private BmiResult summary;
+    private BmiDeterminator _bmiDeterminator = new ();
     private void HandleSubmit()
     {
         submitted = true;
-        BmiCalculatorFacade bmiCalculator = new BmiCalculatorFacade(System);
+        BmiCalculatorFacade bmiCalculator = new BmiCalculatorFacade(UnitSystem, _bmiDeterminator);
         summary = bmiCalculator.GetResult(Weight, Height);
     }
 

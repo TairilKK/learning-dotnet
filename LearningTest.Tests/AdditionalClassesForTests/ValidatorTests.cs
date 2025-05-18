@@ -5,44 +5,7 @@ namespace LearningTest.Tests.AdditionalClassesForTests;
 
 public class ValidatorTests
 {
-    public static IEnumerable<object[]> GetAllRangeList()
-    {
-        yield return new object[] {new List<DateRange>()
-        {
-            new DateRange(
-                new DateTime(2025, 4, 1),
-                new DateTime(2025, 4, 15)
-            ),
-            new DateRange(
-                new DateTime(2025, 5, 1),
-                new DateTime(2025, 5, 15)
-            )
-        }};
-        yield return new object[] { new List<DateRange>()
-        {
-            new DateRange(
-                new DateTime(2025, 4, 15),
-                new DateTime(2025, 4, 25)
-            )
-        }};
-        yield return new object[] {new List<DateRange>()
-        {
-            new DateRange(
-                new DateTime(2025, 4, 8),
-                new DateTime(2025, 4, 25)
-            )
-        }};
-
-        yield return new object[] {new List<DateRange>()
-        {
-            new DateRange(
-                new DateTime(2025, 4, 12),
-                new DateTime(2025, 4, 14)
-            )
-        }};
-
-    }
-    public static IEnumerable<object[]> GetNoneOverlappingRangeList()
+   public static IEnumerable<object[]> GetNoneOverlappingRangeList()
     {
         yield return new object[] {new List<DateRange>()
         {
@@ -66,7 +29,7 @@ public class ValidatorTests
 
     }
     [Theory]
-    [MemberData(nameof(GetAllRangeList))]
+    [ClassData(typeof(ValidatorTestData))]
     public void ValidateOverlapping_ForOverlappingDateRanges_ReturnsFalse(List<DateRange> ranges)
     {
 

@@ -3,12 +3,16 @@ using LearningAttributesAndReflection.Attributes;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-void Display(object obj, string prefix="")
+void Display(object obj, string prefix = "")
 {
     Type objType = obj.GetType();
     PropertyInfo[] props = objType.GetProperties();
+    var showOnlyPrimitive = objType.GetCustomAttribute<DisplayOnlyPrimitiveAttribute>() is null;
+    if (objType.GetCustomAttribute<DisplayObjectNameAttribute>() is not null)
+    {
+        Console.WriteLine($"{prefix}{objType.Name}:");
+    }
 
-    Console.WriteLine($"{prefix}{objType.Name}:");
     foreach(var prop in props)
     {
         var value = prop.GetValue(obj);
@@ -18,13 +22,14 @@ void Display(object obj, string prefix="")
 
         if(!valType.IsPrimitive && valType != typeof(string))
         {
-            Display(value, $"{prefix}  ");
+            var indent = "  ";
+            if(showOnlyPrimitive) Display(value, $"{prefix}{indent}");
             continue;
         }
 
         var attribute = prop.GetCustomAttribute<DisplayNameAttribute>();
         var name = attribute is null ? prop.Name : attribute.Name;
-        Console.WriteLine($"{prefix}  {name}: {value}");
+        Console.WriteLine($"{prefix}{name}: {value}");
     }
 }
 

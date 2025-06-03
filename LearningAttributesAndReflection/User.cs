@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace LearningAttributesAndReflection;
 
+[DisplayObjectName]
+[DisplayOnlyPrimitive]
 public class User
 {
     [DisplayName("First Name")]

@@ -1,5 +1,7 @@
 ﻿using LearningAttributesAndReflection;
+using LearningAttributesAndReflection.Attributes;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
 void Display(object obj, string prefix="")
 {
@@ -11,13 +13,19 @@ void Display(object obj, string prefix="")
     {
         var value = prop.GetValue(obj);
         Type valType = value.GetType();
-        
-        if(valType.IsPrimitive || valType == typeof(string))
-            Console.WriteLine($"{prefix}  {prop.Name}: {value}");
-        else
+        if (valType.BaseType == typeof(Attribute))
+            continue;
+
+        if(!valType.IsPrimitive && valType != typeof(string))
+        {
             Display(value, $"{prefix}  ");
+            continue;
+        }
+
+        var attribute = prop.GetCustomAttribute<DisplayNameAttribute>();
+        var name = attribute is null ? prop.Name : attribute.Name;
+        Console.WriteLine($"{prefix}  {name}: {value}");
     }
-    Console.WriteLine("");
 }
 
 var add1 = new Address()
@@ -33,5 +41,4 @@ var user1 = new User()
     LastName = "Sparrow"
 };
 
-Display(add1);
 Display(user1);

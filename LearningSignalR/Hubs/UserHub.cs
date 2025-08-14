@@ -20,12 +20,14 @@ namespace LearningSignalR.Hubs
             return base.OnConnectedAsync();
         }
 
-        public async Task NewWindowLoaded()
+        public async Task<string> NewWindowLoaded(string name)
         {
             TotalViews++;
 
             // send update to all clients
             await Clients.All.SendAsync("updateTotalViews", TotalViews);
+
+            return $"total views from {name} - {TotalViews}";
         }
     }
 }

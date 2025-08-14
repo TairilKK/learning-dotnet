@@ -14,7 +14,10 @@ connectionUserCount.on("updateTotalUsers", (value) => {
 
 // invoke hub methods
 function newWindowLoadedOnClient() {
-    connectionUserCount.send("NewWindowLoaded");
+    // if send no data seen
+    connectionUserCount.invoke("NewWindowLoaded", "Name").then((data) => {
+        console.log(data)
+    });
 }
 
 // start connection

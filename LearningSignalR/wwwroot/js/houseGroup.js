@@ -141,17 +141,12 @@ connectionHouseGroup.on("subscitpionStatus", (strGroupsJoined, houseName, hasSub
 })
 
 
-function fulfilled() {
-    connectionHouseGroup.invoke("GetRaceStatus").then((raceCounter) => {
-        cloakSpan.innerText = raceCounter.cloak.toString();
-        stoneSpan.innerText = raceCounter.stone.toString();
-        wandSpan.innerText = raceCounter.wand.toString();
-    })
-    console.log("Connection to User Hub successful!");
+function houseGroupFulfilled() {
+    console.log("Connection to House Group Hub successful!");
 }
 function rejected() {
-    console.log("Connection to User Hub unsuccessful :(");
+    console.log("Connection to House Group Hub unsuccessful :(");
 }
 
-connectionHouseGroup.start().then(fulfilled, rejected);
+connectionHouseGroup.start().then(houseGroupFulfilled, rejected);
 

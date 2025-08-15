@@ -15,7 +15,7 @@ connectionUserCount.on("updateTotalUsers", (value) => {
 })
 
 // invoke hub methods
-function newWindowLoadedOnClient() {
+function NewWindowLoadedOnClient() {
     // if send no data seen
     connectionUserCount.invoke("NewWindowLoaded", "Name").then((data) => {
         console.log(data)
@@ -26,7 +26,7 @@ function newWindowLoadedOnClient() {
 function fulfilled() {
     // do something on start
     console.log("Connection to User Hub successful!");
-    newWindowLoadedOnClient();
+    NewWindowLoadedOnClient();
 }
 
 function rejected() {

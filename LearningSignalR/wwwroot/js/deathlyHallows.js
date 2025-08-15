@@ -11,20 +11,17 @@ connectionDeathlyHallows.on("updateDeathlyHallowCount", ( cloak, stone, wand ) =
     wandSpan.innerText = wand.toString();
 })
 
-function newWindowLoadedOnClient() {
-    connectionDeathlyHallows.invoke("getDeathlyHallowCount");
-}
-
-function fulfilled() {
-    connectionDeathlyHallows.invoke("GetRaceStatus").then((raceCounter) => {
+function deathlyHallowsFulfilled() {
+    connectionDeathlyHallows.invoke("GetRaceStatus")
+        .then((raceCounter) => {
         cloakSpan.innerText = raceCounter.cloak.toString();
         stoneSpan.innerText = raceCounter.stone.toString();
         wandSpan.innerText = raceCounter.wand.toString();
     })
-    console.log("Connection to User Hub successful!");
+    console.log("Connection to Deathly Hub successful!");
 }
 function rejected() {
-    console.log("Connection to User Hub unsuccessful :(");
+    console.log("Connection to Deathly Hub unsuccessful :(");
 }
 
-connectionDeathlyHallows.start().then(fulfilled, rejected);
+connectionDeathlyHallows.start().then(deathlyHallowsFulfilled, rejected);

@@ -19,7 +19,7 @@ namespace LearningSignalR.Hubs
         [Authorize]
         public async Task SendMessageToReceiver(string sender, string receiver, string message)
         {
-            var userId = _db.Users.FirstOrDefault(u => u.Email == receiver).Id;
+            string userId = _db.Users.FirstOrDefault(u => u.Email == receiver).Id;
             if (!string.IsNullOrEmpty(userId))
             {
                 await Clients.User(userId).SendAsync("MessageReceived", sender, message);

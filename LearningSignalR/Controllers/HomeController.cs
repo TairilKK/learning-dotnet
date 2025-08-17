@@ -22,7 +22,7 @@ namespace LearningSignalR.Controllers
             return View();
         }
 
-        public async Task<IActionResult> DeathlyHallows([FromQuery]string type)
+        public async Task<IActionResult> DeathlyHallows([FromQuery] string type)
         {
             if (StaticDetails.DealthyHallowRace.ContainsKey(type))
             {
@@ -49,6 +49,10 @@ namespace LearningSignalR.Controllers
             return View();
         }
         public IActionResult HarryPotterHouse()
+        {
+            return View();
+        }
+        public IActionResult BasicChat()
         {
             return View();
         }

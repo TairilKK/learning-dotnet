@@ -12,8 +12,14 @@ document.querySelector("#sendMessage").addEventListener("click", (event) => {
     event.preventDefault();
     let sender = document.querySelector("#senderEmail").value;
     let message = document.querySelector("#chatMessage").value;
+    let receiver = document.querySelector("#receiverEmail").value;
 
-    connectionChat.send("SendMessageToAll", sender, message);
+    if (receiver.length > 0) {
+        connectionChat.send("SendMessageToReceiver", sender, receiver, message);
+    }
+    else {
+        connectionChat.send("SendMessageToAll", sender, message);
+    }
 });
 connectionChat.start().then(() => {
     document.querySelector("#sendMessage").disabled = false;
